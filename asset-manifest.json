@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/area-calculation-app/static/css/main.3fadc94d.css",
+    "main.js": "/area-calculation-app/static/js/main.36f49f3c.js",
+    "index.html": "/area-calculation-app/index.html",
+    "main.3fadc94d.css.map": "/area-calculation-app/static/css/main.3fadc94d.css.map",
+    "main.36f49f3c.js.map": "/area-calculation-app/static/js/main.36f49f3c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3fadc94d.css",
+    "static/js/main.36f49f3c.js"
+  ]
+}
