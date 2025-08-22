@@ -24,6 +24,11 @@ h1 {
   color: #555;
 }
 
+.label-highlight {
+  color: red;
+  font-weight: bold;
+}
+
 .input-group-text {
     font-weight: 500;
 }

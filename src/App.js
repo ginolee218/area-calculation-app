@@ -40,9 +40,9 @@ function App() {
     setInputs(prev => ({ ...prev, [name]: parseFloat(value) || 0 }));
   };
 
-  const renderInputField = (label, name, value) => (
+  const renderInputField = (label, name, value, labelClassName = "") => (
     <div className="col-md-6 mb-3">
-      <label className="form-label">{label}</label>
+      <label className={`form-label ${labelClassName}`}>{label}</label>
       <input
         type="number"
         className="form-control"
@@ -84,8 +84,8 @@ function App() {
         <div className="card-header">主要參數</div>
         <div className="card-body">
           <div className="row">
-            {renderInputField("土地面積 (平方公尺)", "landArea", inputs.landArea)}
-            {renderInputField("權利範圍", "rightsScope", inputs.rightsScope)}
+            {renderInputField("土地面積 (平方公尺)", "landArea", inputs.landArea, "label-highlight")}
+            {renderInputField("權利範圍", "rightsScope", inputs.rightsScope, "label-highlight")}
             {renderInputField("住三容積獎勵", "farIncentive", inputs.farIncentive)}
             {renderInputField("獎勵容積", "incentiveFloorArea", inputs.incentiveFloorArea)}
             {renderInputField("銷坪係數", "salesPingCoefficient", inputs.salesPingCoefficient)}
