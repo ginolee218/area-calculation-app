@@ -4,14 +4,20 @@ import './App.css';
 function App() {
   const statutoryParkingPings = 36.3;
 
-  const [inputs, setInputs] = useState({
-    landArea: 4297,
-    rightsScope: 0.0052,
-    farIncentive: 2.25,
-    incentiveFloorArea: 2,
-    salesPingCoefficient: 1.6,
-    landownerShare: 0.5,
-    commonAreaRatio: 0.33,
+  const [inputs, setInputs] = useState(() => {
+    // 從 localStorage 讀取儲存的值，如果沒有則使用預設值
+    const savedLandArea = localStorage.getItem('landArea');
+    const savedRightsScope = localStorage.getItem('rightsScope');
+
+    return {
+      landArea: savedLandArea ? parseFloat(savedLandArea) : 4297,
+      rightsScope: savedRightsScope ? parseFloat(savedRightsScope) : 0.0052,
+      farIncentive: 2.25,
+      incentiveFloorArea: 2,
+      salesPingCoefficient: 1.6,
+      landownerShare: 0.5,
+      commonAreaRatio: 0.33,
+    };
   });
 
   const [results, setResults] = useState({
@@ -37,7 +43,13 @@ function App() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputs(prev => ({ ...prev, [name]: parseFloat(value) || 0 }));
+    const parsedValue = parseFloat(value) || 0;
+    setInputs(prev => ({ ...prev, [name]: parsedValue }));
+    
+    // 只有 landArea 和 rightsScope 需要儲存到 localStorage
+    if (name === 'landArea' || name === 'rightsScope') {
+      localStorage.setItem(name, parsedValue.toString());
+    }
   };
 
   const renderInputField = (label, name, value, labelClassName = "") => (
